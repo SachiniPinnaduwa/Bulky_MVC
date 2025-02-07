@@ -11,5 +11,14 @@ namespace BulkyWeb.Data
         }
 
         public DbSet<Category> Categories { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>().HasData(
+                    new Category { Id = 1, Name = "Action", DisplayedOrder = 1},
+                    new Category { Id = 2, Name = "SciFi", DisplayedOrder = 2 },
+                    new Category { Id = 3, Name = "History", DisplayedOrder = 3 }
+                );
+        }
     }
 }
